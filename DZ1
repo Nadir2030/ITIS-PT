@@ -1,0 +1,110 @@
+# 1
+# Сel= float(input("Введите температуру в градусах Цельсия"))
+# Far = (9/5) * Сel +32
+# print ( f"Температура в градусах Фаренгейта: {Far}")
+# 2 
+#//Оценка возраста Напишите программу, которая запрашивает возраст пользователя и выводит следующее сообщение:
+# age = int (input("Введите свой возраст"))
+# if age < 18:
+#     print ("Молодой")
+# elif  18 <= age < 60:
+#     print ("Взрослый")
+# elif age >59:
+#     print  ("Пожилой")
+# elif == (<<Иначи если>>)
+# (как else if )
+# 3 
+# // Проверка на делимость Напишите программу, которая проверяет, делится ли введенное число на 3 и на 5 одновременно, и выводит соответствующее сообщение.
+# number = int(input("Введите число"))
+# if number % 3 ==0 and number % 5 ==0:
+#     print (number)
+# else:
+#     print ("не верно")
+# 4 
+
+# num = int(input("Ведите число"))
+# result=[]
+# if num % 7 ==0 and num % 5 !=0:
+#     result.append (num)
+# print (result)
+# 5 
+# number = int(input("Введите число"))
+# for i in range ( 1,number):
+#     if i % 3 ==0:
+#         continue
+#     print (i)
+#  continue == пропуск дейсвия которое описываешь сверху 
+# 6 
+# for i in range (1,100):
+#     if i % 2==0:
+#         print (i)
+#     if i > 50:
+#         break 
+# 7 
+# for i in range (1,10):
+#     if i == 6:
+#         continue
+#     print (i)
+# 8
+# num = int(input("Введите число"))
+# for i in range (1,21):
+#     if 1 < num <20:
+#         break
+#     else:
+#         print (i)
+# 9
+# num = int(input("Введите число"))
+# result=1
+# while result <= num:
+#     print (result)
+#     result+=1
+# 10 
+# num = int(input("Введите число"))
+# count=0
+# while count <= num:
+#     print (num)
+#     break
+# 11
+# i = 1 
+# even_sum = 0
+# while i <= 100:
+#     print (i)
+#     if i % 2 == 0:
+#         even_sum += i 
+#     i += 1
+# print ("Сумма чётных:", even_sum)
+# 12
+# max_nomber = 0 
+# while True:
+#     num = int(input("Введите чило (0 для завершения)"))
+#     if num ==0:
+#         break
+#     if num > max_nomber:
+#         max_nomber = num 
+# print (" Максимальное значение:",max_nomber)
+# 13
+# numbers= input ("Введите числа через пробел").split()
+# numbers = [int(num) for num in numbers]
+# count = 0
+# i = 0
+# while i < len(numbers):
+#     if numbers [i]>10:
+#         count +=1 
+#     i += 1
+# print (" Количество чисел больше 10:", count )
+# 14
+# while True:
+#     num=int(input("Введите число"))
+#     if num == 0: 
+#         break 
+#     if num !=0:
+#         print (num)
+# 15
+# for i in range (1,100):
+#     if i % 3 ==0 and i % 5 ==0:
+#         print (i)
+# 16 
+# for i in range (1,100):
+#     if i % 3 ==0 or i % 5 ==0:
+#         continue
+#     print (i)
