@@ -1,0 +1,67 @@
+ 1.1
+# example_string= 'python'
+# print(example_string[0])
+# print(example_string[-1])
+# 1.2
+# original_string = 'hello python'
+# substring_1=original_string[6:9]
+# print(substring_1)
+# 1.2 вариант 2
+# string='hello python'
+# print(string[6:9])
+# 1.3
+# string='hello python'
+# print(string[8:11])
+# 1.4 получение обратной строки
+# string='hello python'
+# print(string[::-1])
+# 2.1 Преобразует строку в верхний регистр
+# string='hello python'
+# print(string.upper())
+# 2.2 в нижний регистр 
+# string = 'HELLO PYTHON'
+# print(string.lower())
+# 2.3
+# string = 'hello python'
+# print(string.title())
+# 3.1 удаление пробелов в начале и в конце 
+# string = " Python is cool! "
+# print(string.strip())
+# # 4.1 замена подстроки
+# string = 'I love Java'
+# print(string.replace('Java', 'Python'))
+# 5.1
+# string = 'apple,banana,cherry'
+# print(string.split (','))
+# 5.2
+# string = 'appple','bamama','cherry'
+# print(" ".join(string))
+# 6.1,2
+# string = "hello world hello"
+# print(string.find("world"))
+# print(string.count("hello"))
+# 7.1
+# name = "Alice"
+# age = "22"
+# info = f"{name} is {age} years old."
+# print(info)
+# 8.1
+# str = "123456"
+# print(str.isdigit())
+# 8.2
+# str = "HelloWorld"
+# print(str.isalpha())
+# 8.3
+# str = "Python3"
+# print(str.isalpha())
+# 9.1,2
+# str = "programming in python"
+# print(str.startswith("pro"))
+# print(str.endswith("python"))
+# 10.1,2,3
+# s = "abracadabra"
+# result_2 = s.replace('a','')
+# result = s[::2]
+# print(result)
+# print(result_2)
+# print(s.count("a"))
