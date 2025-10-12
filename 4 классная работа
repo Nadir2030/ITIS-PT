@@ -1,0 +1,66 @@
+# 1.1
+# s1 = input()
+# s2 = input()
+# if s1 == s2:
+#     print("всё гуд")
+# else:
+#     print("строки не равны")
+
+#     len1 = len(s1)
+#     len2 = len(s2)
+
+#     if len1>len2:
+#         print({len1-len2})
+#     elif len2>len1:
+#         print({len2-len1})
+#     else:
+#         print("количество одинаковое, но содержимое разное")
+# 2.1 
+# s = input()
+# s.strip()
+# print(s.split(" "))
+# words = s.split()
+# print(len(words))
+# print(s.upper())
+# print(s.replace("кот","собака"))
+# print("".join(s))
+# 3.1
+# s = input()
+# gls = 'а, е, ё, и, о, у, ы, э, ю, я,А, Е, Ё, И, О, У, Ы, Э, Ю, Я'
+# count = 0
+# for i in s:
+#     if i in gls:
+#         count += 1
+#         print(count)
+# ------------------
+# a = [0, 1, 2]
+# a = [x + 1 if x > 1 else x for x in a if x % 2 == 0]
+# print(a)
+# ------------------
+# 4.1
+# text = input("Введите строку: ")
+
+# # Разбиваем строку на слова
+# words = text.split()
+
+# # Создаём пустой список для палиндромов
+# palindromes = []
+
+# # Проходим по каждому слову
+# for word in words:
+#     # Проверяем, является ли слово палиндромом
+#     if word == word[::-1]:
+#         palindromes.append(word)
+# # Выводим результат
+# if palindromes:
+#     print("Найденные палиндромы:", ", ".join(palindromes))
+# else:
+#     print("Палиндромы не найдены.")
+4 НЕ ЗНАЛ КАК РЕШИТЬ И ВОСПОЛЬЗОВАЛСЯ ПОДСКАЗКОЙ В ИНЕТЕ )
+# 5.1 
+# s = input()
+# summ = 0
+# for i in s:
+#     if i.isdigit():
+#         summ+= int(i)
+# print(summ)
