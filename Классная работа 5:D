@@ -1,0 +1,19 @@
+1.
+def sum_two_numbers(a,b):
+    return a + b
+a = int(input())
+b = int(input())
+print(sum_two_numbers(a,b))
+
+2.
+def is_even(number):
+    return number % 2 == 0 
+number = int(input())
+print( is_even(number))
+
+3. 
+fahrenheit = 0
+def celsius_to_fahrenheit(celsius):
+    return celsius * 9/5 + 32
+celsius = int(input())
+print(celsius_to_fahrenheit(celsius))
