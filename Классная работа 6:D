@@ -1,0 +1,52 @@
+1.
+my_profile = { 'имя': ' Nadir', 'возраст': 18, 'город': 'Уфа' }
+print(my_profile)
+print(my_profile['город'])
+
+2. 
+my_profile = { 'имя': ' Nadir', 'возраст': 18, 'город': 'Уфа' }
+# print(my_profile['хобби'])
+print(my_profile.get('хобби'))
+print(my_profile.get('хобби', 'не указано'))
+my_hobbies = {'хобби': 'футбол', 'любимый цвет': 'красный'}
+my_profile.update(my_hobbies)
+print(my_profile)
+
+3.
+my_profile = { 'имя': ' Nadir', 'возраст': 18, 'город': 'Уфа' }
+my_hobbies = {'хобби': 'футбол', 'любимый цвет': 'красный'}
+my_profile.update(my_hobbies)
+my_profile['возраст'] = 19
+my_profile['email'] = 'nadir@viar.ru'
+deleted_color = my_profile.pop('любимый цвет')
+if 'любимый цвет' in my_profile:
+    print ('Yes')
+else:
+    print('NEMA')
+
+4.
+my_profile = { 'имя': ' Nadir', 'возраст': 18, 'город': 'Уфа' }
+my_hobbies = {'хобби': 'футбол', 'любимый цвет': 'красный'}
+my_profile.update(my_hobbies)
+for key in my_profile:
+    print(key, my_profile[key]) 
+values = my_profile.values()
+items = my_hobbies.items()
+print(items)
+
+5.
+classmates = {
+    "Anna": {"возраст": 18, "город": "Москва"},
+    "Leon": {"возраст": 18, "город": "Питер"}
+}
+
+classmates["Anna"]["возраст"] = 19
+print(classmates)
+
+classmates["Mag"] = {"возраст": 20, "город": "New York"}
+print(classmates)
+
+6.
+profile_backup = my_profile.copy()
+profile_backup.setdefault('профессия','студент' )
+print(profile_backup.clear)
