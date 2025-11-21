@@ -1,0 +1,52 @@
+1
+s = [5,2,8,2,5,1,8,8,3]
+print(set(s))
+print(len(set(s)))
+2 
+Вася = {"Матрица", "Начало", "Матрица", "Интерстеллар"}
+Петя = {"Начало", "Аватар", "Интерстеллар", "Титаник"}
+print(Вася.intersection(Петя))
+3 
+Вася = {"Матрица", "Начало", "Матрица", "Интерстеллар"}
+Петя = {"Начало", "Аватар", "Интерстеллар", "Титаник"}
+print(Вася.difference(Петя))
+4
+Вася = {"Матрица", "Начало", "Матрица", "Интерстеллар"}
+Петя = {"Начало", "Аватар", "Интерстеллар", "Титаник"}
+Вместе = Вася.union(Петя)
+print (Вместе)
+5
+Вася = {"Матрица", "Начало", "Матрица", "Интерстеллар"}
+Петя = {"Начало", "Аватар", "Интерстеллар", "Титаник"}
+print(Вася.symmetric_difference(Петя))
+6
+fruits = set()
+fruits.add("яблоко")
+fruits.add("банан")
+fruits.add("апельсин")
+fruits.remove("банан")
+fruits.discard("груша")
+print(fruits)
+7 
+A = {1,2,3}
+B = {1,2,3,4,5}
+print(A.issubset(B))
+print(B.issuperset(A))
+8 
+s = ("user1@mail.com", "user2@mail.com", "user1@mail.com", "user3@mail.com", "user2@mail.com")
+e = set(s)
+e.add("user4@mail.com")
+print(list(e))
+9 
+a = {1,2,3,4,5,6,7,8,9,10}
+for i in list(a):
+    if i % 2 ==0:
+        a.remove(i)
+a.add(11)
+a.add(12)
+a.add(13)
+for i in list(a):
+    if i < 5:
+        a.discard(i)
+print(7 in a)
+print(15 in a )
