@@ -1,0 +1,58 @@
+1.Создайте одномерный массив из чисел от 1 до 10 с помощью np.array()
+# import numpy as np
+# arr = np.array ([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+# print("Однемернный массив, (arr): ")
+# print(arr)
+# 2. o	Создайте массив из 7 элементов, заполненных нулями
+# import numpy as np
+# arr_zero = np.zeros(5)
+# print(arr_zero)
+# 3. Создайте массив из 5 единиц
+# import numpy as np 
+
+# five_one = np.ones(5)
+
+# print(five_one)
+# 4. Создайте массив от 10 до 50 с шагом 5
+# import numpy as np 
+# mass = np.arange(10, 50, 5)
+# print(mass)
+# 5. Создайте массив и выведите второй элемент, последний элемент и элементы с индексами от 3 до 6.
+# import numpy as np
+# arr = np.array([1,2,3,4,5,6,7,8,9,10])
+# print(arr[0])
+# print(arr[3:6])
+# print(arr[-1])
+# 6. Создайте одномерный массив и выведите его элементы с помощью цикла.
+# import numpy as np 
+# arr = np.array([1,2,3,4,5,6,7,8,9,10])
+# for i in arr:
+#     print(i)
+# 7. Создайте два массива одинаковой длины и сложите их поэлементно.
+# import numpy as np
+# arr1 = np.array([4,5,6])
+# arr2 = np.array([7,8,4])
+# sum1 = arr1 + arr2 
+# print(sum1)
+# 8. Создайте массив и умножьте все его элементы на 2.
+# import numpy as np
+# arr1 = ([1,2,3,4,5])
+# result = arr1 * 2
+# print(result)
+# 9. Создайте массив и возведите все его элементы в квадрат
+# import numpy as np 
+# arr = np.array([1,2,3,4,5])
+# square = arr ** 2
+# print(square)
+# 10. Создайте массив и найдите его минимум и максимум с использованием функций np.min() и np.max().
+# import numpy as np 
+# arr = np.array([1,2,3,4])
+# arr_max = np.max(arr)
+# arr_min = np.min(arr)
+# print(arr_max, arr_min)
+# 11.Создайте массив и выберите только те элементы, которые больше 5.
+# import numpy as np
+# arr = np.array([5,6,7,8,4,3,2])
+# for i in arr:
+#     if i > 5:
+#         print(i)
