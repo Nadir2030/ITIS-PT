@@ -1,0 +1,115 @@
+
+# Задание 1 — Скорость автомобиля
+# Создайте класс Car, который имеет:
+# приватный атрибут __speed (скорость машины)
+# Реализуйте свойства:
+# Геттер для скорости — возвращает текущую скорость
+# Сеттер для скорости — устанавливает скорость только если новое значение в диапазоне от 0 до 240 км/ч.
+# Если значение некорректное, выводите сообщение, что скорость не может быть установлена.
+# Проверка: создайте объект Car, попытайтесь установить корректную и некорректную скорость и выведите результат.
+# class Car:
+#     def __init__(self,speed):
+#         self.__speed = speed 
+    
+#     @property
+#     def speed(self):
+#         return self.__speed
+    
+#     @speed.setter
+#     def speed(self,speed):
+#         if 0 <= speed <= 240:
+#             self.__speed = speed
+#         else:
+#             print("Нельзя расчитать скорость")
+
+
+# car = Car(190)
+# print(car.speed)
+
+# car.speed = 240
+# print(car.speed)
+
+#  Задание 2 — Аккаунт пользователя
+# Создайте класс User, который имеет:
+# приватный атрибут __username — имя пользователя
+# приватный атрибут __password — пароль
+# Реализуйте свойства:
+# Геттер для имени пользователя (чтение разрешено)
+# Геттер для пароля пользователя (чтение разрешено)
+# Сеттер для пароля — устанавливает новый пароль, только если длина >= 6 символов, иначе выводит сообщение об ошибке.
+# Проверка: создайте объект User, попробуйте изменить пароль на корректный и некорректный, выведите имя и пароль через свойства.
+
+# class User:
+#     def __init__(self,username,password):
+#         self.__username = username
+#         self.__password = password
+
+#     @property
+#     def username(self):
+#         return self.__username
+#     @property
+#     def password(self):
+#         return self.__password 
+        
+#     @password.setter
+#     def password (self,password):
+#         if len(password) >= 6:
+#             self.__password = password
+#         else:
+#             print("некоректный ввод пароля")
+
+# user = User("nad","1231234")
+# print(user.username)
+
+# user.password = "1235323"
+# print(user.password)
+
+
+# Задание 3 — Книга
+# Создайте класс Book, который имеет приватные атрибуты:
+# __title — название книги
+# __author — автор книги
+# __price — цена книги
+# Реализуйте свойства:
+# Геттеры для всех атрибутов
+# Сеттер для цены — устанавливает новую цену только если она положительная, иначе выводит сообщение об ошибке
+# Проверка: создайте объект Book, выведите его данные и попробуйте изменить цену на положительную и отрицательную.
+
+# class Book:
+#     def __init__(self, title, author, price):
+#         self.__title = title
+#         self.__author = author   
+#         self.__price = price
+
+#     @property
+#     def title(self):
+#         return self.__title
+    
+#     @property
+#     def author(self):
+#         return self.__author
+    
+#     @property
+#     def price(self):
+#         return self.__price 
+    
+#     @price.setter
+#     def price(self, price):
+#         if price < 0:
+#             print("Не верно")
+#         else:
+#             self.__price = price  
+
+# # создаём книгу
+# b = Book("Игра Престолов", "Джордж Мартин", 2000)
+
+# # читаем свойства
+# print(b.title)
+# print(b.author)
+# print(b.price)
+
+# # меняем цену
+# b.price = 2500
+# print(b.price)
+
+# b.price = -2000
