@@ -1,0 +1,203 @@
+# 1.1
+# def count_even_numbers(numbers):
+#     """Функция для подсчёта четных чисел
+
+#     Args:
+#         numbers: список чисел.
+
+#     Returns:
+#         int: Сумма всех четных чисел.
+#     """
+
+#     even_count = 0
+#     for number in numbers:
+#         if number % 2 == 0:
+#             even_count += 1
+#     return even_count
+# 1.2
+# def find_max_numbers(numbers):
+#     """Функция для поиска маскимального числа
+
+#     Args:
+#         numbers: список чисел
+
+#     Returns:
+#         int: Максимальное значение
+# """
+#     max_numbers = numbers[0]
+#     for number in numbers:
+#         if number > max_numbers:
+#             max_numbers = number
+#     return max_numbers
+# 1.3 
+# def process_filter(numbers, threshold):
+#     """Функция для фильтрации и преобразования
+#     Args:
+
+#         numbers: список чисел
+#         thereshold: пороговое значение
+
+#     Returns:
+#         int: Сумма всех чисел, больше порогового числа
+#     """
+#     doubled_numbers = []
+#     for number in numbers:
+#         if number > threshold:
+#             doubled_numbers.append(el * 2)
+#     return doubled_numbers
+# 1.4
+# def find_long_string(string):
+#     """Функци возвращает самую длинную строку из списка 
+
+#     Args:
+#         string: строка
+
+#     Returns:
+#         int: Самая длинная строка из списка
+# """
+#     max_string = ""
+#     for line in string:
+#         if len(line) > len(max_string):
+#             max_string = line
+#     return max_string
+
+
+
+# 2.1 
+# a = [3, 5, 1]
+# max_a = a[0]
+# min_a = a[0]
+# for n in a:
+#     if n > max_a:
+#         max_a = n
+#     if n < min_a:
+#         min_a = n
+
+# b = [10, 7, 12]
+# max_b = b[0]
+# min_b = b[0]
+# for n in b:
+#     if n > max_b:
+#         max_b = n
+#     if n < min_b:
+#         min_b = n
+
+# c = [4, 8, 6]
+# max_c = c[0]
+# min_c = c[0]
+# for n in c:
+#     if n > max_c:
+#         max_c = n
+#     if n < min_c:
+#         min_c = n
+
+# def get_min(numbers1):
+#     """Функци для вычесления минимального числа 
+
+# #     Args:
+# #         numbers: список чисел
+
+# #     Returns:
+# #         int: минимальное число
+# # """
+#     min_number1 = numbers1[0]
+    
+#     for nomber1 in numbers1:
+#         if nomber1 < min_number1:
+#             min_number1 = nomber1
+            
+#     return min_number1
+# def get_max(numbers2):
+
+#     """Функци для вычесления минимального числа 
+
+# #     Args:
+# #         numbers: список чисел
+
+# #     Returns:
+# #         int: максимальное число 
+# # """
+#     max_number = numbers2[0]
+
+#     for nomber2 in numbers2:
+#         if nomber2 > max_number:
+#             max_number = nomber2
+#     return max_number
+
+# a = [3, 5, 1]
+# b = [10, 7, 12]
+# c = [4, 8, 6]
+
+# print("a:", get_min(a))
+# print("b:", get_min(b))
+# print("c:", get_min(c))
+# print("a:", get_max(a))
+# print("b:", get_max(b))
+# print("c:", get_max(c))
+
+3.1 
+numbers = [1, -2, 3, -4, 5]
+
+positive_sum = 0
+for number in numbers:
+    if number > 0:
+        positive_sum += number
+
+positive_count = 0
+for number in numbers:
+    if number > 0:
+        positive_count += 1
+
+
+def is_positive(number):
+    """Функци возвращает True если число положительное 
+
+    Args:
+        number: список положительных чисел
+
+    Returns:
+        int: вывод True or False
+"""
+    if number > 0:
+        return True
+    else:
+        return False
+
+
+def sum_positive(numbers):
+    """Функци считает сумму положительных чисел используя функция is_positive  
+
+    Args:
+        numbers: сумма положительных чисел
+
+    Returns:
+        int: вывод суммы положительных чисел
+"""
+    sum_positive1 = 0
+    for num in numbers:
+        if is_positive(num):
+            sum_positive1 = sum_positive1 + num
+    return sum_positive1
+
+
+def count_positive(numbers):
+    """Функци считает колличество положительных чисел используя функция is_positive  
+
+    Args:
+        numbers: колличество положительных чисел
+
+    Returns:
+        int: вывод колличества положительных чисел
+"""
+    count = 0
+    for num in numbers:
+        if is_positive(num):
+            count = count + 1
+    return count
+
+
+positive_sum = sum_positive(numbers)
+positive_count = count_positive(numbers)
+
+print("Сумма положительных:", positive_sum)
+print("Количество положительных:", positive_count)
