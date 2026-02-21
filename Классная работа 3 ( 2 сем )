@@ -1,0 +1,62 @@
+# 12. Создайте массив и вычислите его среднее значение и стандартное отклонение.
+# import numpy as np 
+# arr = np.array([1,2,3,4,5])
+# arr_mean = np.mean(arr)
+# arr_std = np.std(arr)
+# print(arr_mean)
+# print(arr_std)
+# 13. Примените к элементам массива функции np.log(), np.exp() и np.sin().
+# import numpy as np 
+# arr = np.array([1,2,3,4,5,6,7,88,9])
+# arr_sin = np.sin(arr)
+# arr_exp = np.exp(arr)
+# arr_log = np.log(arr)
+# print("\nСинус элементов массива:")
+# print(arr_sin)
+# print("\nЭкспонента эементво массива:")
+# print(arr_exp)
+# print("\nЛогарифм элементов массива:")
+# print(arr_log)
+
+# 14. Создайте массив из 10 случайных чисел, распределенных от 0 до 1.
+# import numpy as np
+# arr_random = np.random.rand(10)
+# print("\nСлучайные 10 цифр от 0 ддо 1:")
+# print(arr_random)
+# 15. Создайте массив из 6 случайных целых чисел от 1 до 100
+# import numpy as np 
+# arr_random = np.random.randint(1, 101,size= 6)
+# print("\nМассив случайных целых чисел от 1 до 10:")
+# print(arr_random)
+# 16. Преобразуйте одномерный массив в двумерный массив с 2 строками и 5 столбцами.
+# import numpy as np 
+# arr = np.array([1,2,3,4,5,6,7,8,9,10])
+# arr1_reshaped1 = arr.reshape(5,2)
+# print("\nМассив, преобразованный в столбец и в двумерный:")
+# print(arr1_reshaped1)
+
+# 17. Измените форму одномерного массива с 9 элементами на двумерный массив 3x3.
+# import numpy as np 
+# arr = np.array([1,2,3,4,5,6,7,8,9])
+# arr1_reshaped1 = arr.reshape(3,3)
+# print("\nМассив, преобразованный в столбец и в двумерный:")
+# print(arr1_reshaped1)
+
+# 18.  Создайте массив и выберите только те элементы, которые больше 5.
+# import numpy as np 
+# arr = np.array([1,2,4,6,8,9,7,8,6,5])
+# arr_condition = arr > 5
+# print(arr_condition)
+# print((arr[arr > 5]))
+# 19. Создайте массив и примените функцию возведения в куб ко всем его элементам с помощью np.vectorize().
+# import numpy as np 
+# arr = np.array([1,2,3,4,5])
+# arr_vectorize = arr ** 3
+# print(arr_vectorize)
+# ???
+# 20. Сохраните одномерный массив в файл .npy и загрузите его обратно в программу.
+# import numpy as np 
+# arr = np.array([1,2,3,4,5,6,7,8])
+# np.save('array.npy', arr)
+# loaded_arr = np.load('array.npy')
+# print(loaded_arr)
