@@ -1,0 +1,62 @@
+# Задача 1 — Сумма квадратов. Найдите сумму квадратов всех элементов.
+# import numpy as np 
+# import time as t 
+
+# Low_N = -500_000
+# upper_N = 500_000
+
+# start = t.perf_counter()
+# arr = np.arange(Low_N, upper_N)
+
+# result = np.sum(arr ** 2 )
+
+# end = t.perf_counter()
+
+# print(result)
+# print(end - start)
+
+# Задача 2 — Сумма только четных чисел и их количество
+
+# import numpy as np 
+# import time as t 
+
+# start_time = t.perf_counter()
+
+# arr = np.arange(-500000, 500000)
+
+# result_sum =np.sum(arr % 2)
+# result_count = np.count_nonzero(arr % 2)
+
+# end_time = t.perf_counter()
+
+# print(' Сумма только четных чисел : ',result_sum)
+# print(' Колличество четных чисел : ', result_count)
+# print( 'Время выполнения работы', end_time - start_time)
+
+# Задача 3 — Среднее значение квадратов элементов, кратных 3
+# import numpy as np 
+# import time as t
+
+# start_time = t.perf_counter()
+
+# arr = np.arange( -500_000, 500_000)
+# mean_value = np.mean(arr[arr % 3 == 0] ** 2)
+
+# end_time = t.perf_counter()
+
+# print('Cредние значиние квадратов элементво кратных 3', mean_value)
+# print('время потраченное на работу ',end_time - start_time)
+
+# Задача 4 — Найти максимум среди элементов, кратных 5 и отрицательных
+# import numpy as np 
+# import time as t 
+
+# start_time = t.perf_counter()
+
+# arr = np.arange(-500_000, 500_000)
+# result_max = np.max(arr[(arr > 0) & (arr % 5 == 0)])
+
+# end_time = t.perf_counter()
+
+# print(result_max)
+# print(end_time - start_time)
