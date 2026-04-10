@@ -1,0 +1,114 @@
+import random as rd
+import json as js
+import time as tm
+import copy as cp
+import matplotlib.pyplot as plt
+
+
+def shell_sort(arr):
+
+    n = len(arr)
+    gap = n // 2
+    iterations = 0
+
+    while gap > 0:
+
+        for i in range(gap, n):
+
+            temp = arr[i]
+            j = i
+
+            while j >= gap and arr[j - gap] > temp:
+                arr[j] = arr[j - gap]
+                j -= gap
+                iterations += 1
+
+            arr[j] = temp
+            iterations += 1
+
+        gap //= 2
+
+    return iterations
+
+
+# генерация данных
+def generate_datasets():
+
+    sizes = [100 + i * 100 for i in range(100)]
+    datasets = []
+
+    for size in sizes:
+
+        arr = [rd.randint(0, 100000) for i in range(size)]
+        datasets.append(arr)
+
+    with open("datasets.json", "w") as file:
+        js.dump(datasets, file)
+
+    print("Сгенерированные данные")
+
+
+# загрузка данных
+def load_datasets():
+
+    with open("datasets.json") as file:
+        datasets = js.load(file)
+
+    return datasets
+
+
+# эксперимент
+def run_experiment(datasets):
+
+    sizes = []
+    times = []
+    iterations_list = []
+
+    for arr in datasets:
+
+        arr_copy = cp.deepcopy(arr)
+
+        start = tm.perf_counter()
+        iterations = shell_sort(arr_copy)
+        end = tm.perf_counter()
+
+        sizes.append(len(arr))
+        times.append(end - start)
+        iterations_list.append(iterations)
+
+    return sizes, times, iterations_list
+
+
+# построение графиков
+def plot_results(sizes, times, iterations):
+
+    plt.figure()
+    plt.plot(sizes, times)
+    plt.xlabel("Размер массива")
+    plt.ylabel("Время (сек)")
+    plt.title("Shell Sort: время работы")
+    plt.grid()
+    plt.show()
+
+    plt.figure()
+    plt.plot(sizes, iterations)
+    plt.xlabel("Размер массива")
+    plt.ylabel("Количество итераций")
+    plt.title("Shell Sort: количество итераций")
+    plt.grid()
+    plt.show()
+
+
+def main():
+
+    generate_datasets()
+
+    datasets = load_datasets()
+
+    sizes, times, iterations = run_experiment(datasets)
+
+    plot_results(sizes, times, iterations)
+
+
+if __name__ == "__main__":
+    main()
