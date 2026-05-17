@@ -1,0 +1,494 @@
+import random
+import time
+import matplotlib.pyplot as plt
+
+class Node:
+    RED = 1
+    BLACK = 0
+
+    def __init__(self, key):
+        self.key = key
+        self.color = Node.RED
+        self.left = None
+        self.right = None
+        self.parent = None
+
+
+class RedBlackTree:
+
+    def __init__(self):
+
+        self.NIL = Node(0)
+        self.NIL.color = Node.BLACK
+
+        self.NIL.left = self.NIL
+        self.NIL.right = self.NIL
+        self.NIL.parent = self.NIL
+
+        self.root = self.NIL
+        self.operations = 0
+
+    def reset_ops(self):
+        self.operations = 0
+
+    # Левый поворот
+    def left_rotate(self, x):
+
+        y = x.right
+        x.right = y.left
+
+        if y.left != self.NIL:
+            y.left.parent = x
+
+        y.parent = x.parent
+
+        if x.parent == self.NIL:
+            self.root = y
+
+        elif x == x.parent.left:
+            x.parent.left = y
+
+        else:
+            x.parent.right = y
+
+        y.left = x
+        x.parent = y
+
+        self.operations += 1
+
+    # Правый поворот
+    def right_rotate(self, y):
+
+        x = y.left
+        y.left = x.right
+
+        if x.right != self.NIL:
+            x.right.parent = y
+
+        x.parent = y.parent
+
+        if y.parent == self.NIL:
+            self.root = x
+
+        elif y == y.parent.right:
+            y.parent.right = x
+
+        else:
+            y.parent.left = x
+
+        x.right = y
+        y.parent = x
+
+        self.operations += 1
+
+    # Поиск
+    def search(self, key):
+
+        cur = self.root
+
+        while cur != self.NIL:
+
+            self.operations += 1
+
+            if key == cur.key:
+                return True
+
+            if key < cur.key:
+                cur = cur.left
+            else:
+                cur = cur.right
+
+        return False
+
+    # Вставка
+    def insert(self, key):
+
+        node = Node(key)
+        node.left = self.NIL
+        node.right = self.NIL
+
+        parent = self.NIL
+        cur = self.root
+
+        while cur != self.NIL:
+
+            self.operations += 1
+
+            parent = cur
+
+            if key < cur.key:
+                cur = cur.left
+            else:
+                cur = cur.right
+
+        node.parent = parent
+
+        if parent == self.NIL:
+            self.root = node
+
+        elif key < parent.key:
+            parent.left = node
+
+        else:
+            parent.right = node
+
+        self.fix_insert(node)
+
+    # Балансировка после вставки
+    def fix_insert(self, k):
+
+        while k.parent.color == Node.RED:
+
+            if k.parent == k.parent.parent.right:
+
+                u = k.parent.parent.left
+
+                if u.color == Node.RED:
+
+                    u.color = Node.BLACK
+                    k.parent.color = Node.BLACK
+                    k.parent.parent.color = Node.RED
+                    k = k.parent.parent
+
+                else:
+
+                    if k == k.parent.left:
+                        k = k.parent
+                        self.right_rotate(k)
+
+                    k.parent.color = Node.BLACK
+                    k.parent.parent.color = Node.RED
+                    self.left_rotate(k.parent.parent)
+
+            else:
+
+                u = k.parent.parent.right
+
+                if u.color == Node.RED:
+
+                    u.color = Node.BLACK
+                    k.parent.color = Node.BLACK
+                    k.parent.parent.color = Node.RED
+                    k = k.parent.parent
+
+                else:
+
+                    if k == k.parent.right:
+                        k = k.parent
+                        self.left_rotate(k)
+
+                    k.parent.color = Node.BLACK
+                    k.parent.parent.color = Node.RED
+                    self.right_rotate(k.parent.parent)
+
+            if k == self.root:
+                break
+
+        self.root.color = Node.BLACK
+
+    # Минимальный элемент
+    def minimum(self, node):
+
+        while node.left != self.NIL:
+
+            self.operations += 1
+            node = node.left
+
+        return node
+
+    # Замена узлов
+    def transplant(self, u, v):
+
+        if u.parent == self.NIL:
+            self.root = v
+
+        elif u == u.parent.left:
+            u.parent.left = v
+
+        else:
+            u.parent.right = v
+
+        v.parent = u.parent
+
+    # Удаление
+    def delete(self, key):
+
+        z = self.root
+
+        while z != self.NIL:
+
+            self.operations += 1
+
+            if z.key == key:
+                break
+
+            if key < z.key:
+                z = z.left
+            else:
+                z = z.right
+
+        if z == self.NIL:
+            return False
+
+        y = z
+        y_color = y.color
+
+        if z.left == self.NIL:
+
+            x = z.right
+            self.transplant(z, z.right)
+
+        elif z.right == self.NIL:
+
+            x = z.left
+            self.transplant(z, z.left)
+
+        else:
+
+            y = self.minimum(z.right)
+            y_color = y.color
+            x = y.right
+
+            if y.parent != z:
+
+                self.transplant(y, y.right)
+                y.right = z.right
+                y.right.parent = y
+
+            else:
+                x.parent = y
+
+            self.transplant(z, y)
+
+            y.left = z.left
+            y.left.parent = y
+            y.color = z.color
+
+        if y_color == Node.BLACK:
+            self.fix_delete(x)
+
+        return True
+
+    # Балансировка после удаления
+    def fix_delete(self, x):
+
+        while x != self.root and x.color == Node.BLACK:
+
+            if x == x.parent.left:
+
+                s = x.parent.right
+
+                if s.color == Node.RED:
+
+                    s.color = Node.BLACK
+                    x.parent.color = Node.RED
+                    self.left_rotate(x.parent)
+                    s = x.parent.right
+
+                if s.left.color == Node.BLACK and s.right.color == Node.BLACK:
+
+                    s.color = Node.RED
+                    x = x.parent
+
+                else:
+
+                    if s.right.color == Node.BLACK:
+
+                        s.left.color = Node.BLACK
+                        s.color = Node.RED
+                        self.right_rotate(s)
+                        s = x.parent.right
+
+                    s.color = x.parent.color
+                    x.parent.color = Node.BLACK
+                    s.right.color = Node.BLACK
+
+                    self.left_rotate(x.parent)
+                    x = self.root
+
+            else:
+
+                s = x.parent.left
+
+                if s.color == Node.RED:
+
+                    s.color = Node.BLACK
+                    x.parent.color = Node.RED
+                    self.right_rotate(x.parent)
+                    s = x.parent.left
+
+                if s.left.color == Node.BLACK and s.right.color == Node.BLACK:
+
+                    s.color = Node.RED
+                    x = x.parent
+
+                else:
+
+                    if s.left.color == Node.BLACK:
+
+                        s.right.color = Node.BLACK
+                        s.color = Node.RED
+                        self.left_rotate(s)
+                        s = x.parent.left
+
+                    s.color = x.parent.color
+                    x.parent.color = Node.BLACK
+                    s.left.color = Node.BLACK
+
+                    self.right_rotate(x.parent)
+                    x = self.root
+
+        x.color = Node.BLACK
+
+
+tree = RedBlackTree()
+
+# Создание массива
+data = [random.randint(1, 1000000) for _ in range(10000)]
+
+insert_times = []
+insert_ops = []
+
+# Вставка
+for num in data:
+
+    tree.reset_ops()
+
+    start = time.perf_counter()
+    tree.insert(num)
+    end = time.perf_counter()
+
+    insert_times.append(end - start)
+    insert_ops.append(tree.operations)
+
+search_times = []
+search_ops = []
+
+# Поиск 100 элементов
+for num in random.sample(data, 100):
+
+    tree.reset_ops()
+
+    start = time.perf_counter()
+    tree.search(num)
+    end = time.perf_counter()
+
+    search_times.append(end - start)
+    search_ops.append(tree.operations)
+
+delete_times = []
+delete_ops = []
+
+# Удаление 1000 элементов
+for num in random.sample(data, 1000):
+
+    tree.reset_ops()
+
+    start = time.perf_counter()
+    tree.delete(num)
+    end = time.perf_counter()
+
+    delete_times.append(end - start)
+    delete_ops.append(tree.operations)
+
+step = 1000
+sizes = list(range(step, 10001, step))
+
+
+def measure_insert(tree, data):
+    times = []
+
+    for i in range(step, len(data)+1, step):
+
+        tree = RedBlackTree()
+
+        part = data[:i]
+
+        start = time.perf_counter()
+
+        for x in part:
+            tree.insert(x)
+
+        end = time.perf_counter()
+
+        times.append((end - start) / i)
+
+    return times
+
+
+def measure_search(tree, data):
+    times = []
+
+    tree = RedBlackTree()
+    for x in data:
+        tree.insert(x)
+
+    for i in range(step, len(data)+1, step):
+
+        sample = random.sample(data[:i], 100)
+
+        start = time.perf_counter()
+
+        for x in sample:
+            tree.search(x)
+
+        end = time.perf_counter()
+
+        times.append((end - start) / 100)
+
+    return times
+
+
+def measure_delete(tree, data):
+    times = []
+
+    for i in range(step, len(data)+1, step):
+
+        tree = RedBlackTree()
+        part = data[:i]
+
+        for x in part:
+            tree.insert(x)
+
+        to_delete = random.sample(part, min(100, len(part)))
+
+        start = time.perf_counter()
+
+        for x in to_delete:
+            tree.delete(x)
+
+        end = time.perf_counter()
+
+        times.append((end - start) / len(to_delete))
+
+    return times
+
+
+insert_curve = measure_insert(tree, data)
+search_curve = measure_search(tree, data)
+delete_curve = measure_delete(tree, data)
+
+
+plt.plot(sizes, insert_curve, label="Вставка")
+plt.plot(sizes, search_curve, label="Поиск")
+plt.plot(sizes, delete_curve, label="Удаление")
+
+plt.title("Зависимость времени операций от размера данных")
+plt.xlabel("Размер структуры (n)")
+plt.ylabel("Среднее время операции")
+plt.legend()
+plt.grid()
+plt.show()
+
+# Средние значения
+print("Вставка:")
+print("Среднее время:", sum(insert_times) / len(insert_times))
+print("Среднее операций:", sum(insert_ops) / len(insert_ops))
+
+print("\nПоиск:")
+print("Среднее время:", sum(search_times) / len(search_times))
+print("Среднее операций:", sum(search_ops) / len(search_ops))
+
+print("\nУдаление:")
+print("Среднее время:", sum(delete_times) / len(delete_times))
+print("Среднее операций:", sum(delete_ops) / len(delete_ops))
