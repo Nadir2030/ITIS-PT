@@ -1,0 +1,49 @@
+class PlayList: 
+    def __init__(self):
+        self.songs = []
+
+    def add_song(self, song, duration):
+        song_data = {
+            "name": song,
+            "duration": duration
+        }
+
+        self.songs.append(song_data)
+
+    def remove_song(self, name):
+        for song in self.songs:
+            if name == song["name"]:
+                self.songs.remove(song)
+
+    def total_duration(self):
+        Summ = 0
+        for song in self.songs:
+            Summ = Summ + song["duration"]
+        return Summ
+        
+    def __len__(self):
+        return len(self.songs)
+
+    def show_songs (self):
+        print( self.songs )
+
+
+
+song = {
+    "name": "Kiis of life",
+    "duration": 256
+}
+
+
+playlist = PlayList()
+print(len(playlist)) # Пустрой плэйлист 
+playlist.add_song("Solitude", 270) # Добавление песни
+print(playlist.songs)
+playlist.add_song("Come see me", 306) # Добавление песни
+playlist.add_song("kiss of life ", 256) # Добавление песни
+print(playlist.songs)
+print(playlist.total_duration())
+playlist.remove_song("Solitude") # Удаление песни 
+print(playlist.songs)
+playlist.remove_song("Solfeufniede") #Удаление несуществующей песни 
+playlist.show_songs() # Список песен
