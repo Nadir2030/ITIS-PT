@@ -28,14 +28,12 @@ class TaskManager(QMainWindow):
 
         self.tasks = []
 
-        # Центральный виджет и основной layout
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
 
         main_layout = QVBoxLayout()
         central_widget.setLayout(main_layout)
 
-        # Название задачи
         title_label = QLabel("Название задачи:")
         self.title_input = QLineEdit()
         self.title_input.setPlaceholderText(
@@ -45,7 +43,6 @@ class TaskManager(QMainWindow):
         main_layout.addWidget(title_label)
         main_layout.addWidget(self.title_input)
 
-        # Описание задачи
         description_label = QLabel("Описание:")
         self.description_input = QTextEdit()
         self.description_input.setPlaceholderText(
@@ -56,7 +53,6 @@ class TaskManager(QMainWindow):
         main_layout.addWidget(description_label)
         main_layout.addWidget(self.description_input)
 
-        # Выбор приоритета
         priority_group = QGroupBox("Приоритет")
         priority_layout = QHBoxLayout()
         priority_group.setLayout(priority_layout)
@@ -78,7 +74,6 @@ class TaskManager(QMainWindow):
 
         main_layout.addWidget(priority_group)
 
-        # Дополнительные настройки
         settings_group = QGroupBox("Дополнительные настройки")
         settings_layout = QVBoxLayout()
         settings_group.setLayout(settings_layout)
@@ -93,7 +88,6 @@ class TaskManager(QMainWindow):
 
         main_layout.addWidget(settings_group)
 
-        # Кнопки управления
         buttons_layout = QHBoxLayout()
 
         self.create_button = QPushButton("Создать задачу")
@@ -108,7 +102,6 @@ class TaskManager(QMainWindow):
 
         main_layout.addLayout(buttons_layout)
 
-        # Фильтр задач
         filter_layout = QHBoxLayout()
 
         filter_label = QLabel("Фильтр по приоритету:")
@@ -123,7 +116,6 @@ class TaskManager(QMainWindow):
 
         main_layout.addLayout(filter_layout)
 
-        # Область отображения задач
         self.tasks_output = QTextEdit()
         self.tasks_output.setReadOnly(True)
         self.tasks_output.setPlaceholderText(
@@ -132,14 +124,12 @@ class TaskManager(QMainWindow):
 
         main_layout.addWidget(self.tasks_output)
 
-        # Статус и счётчик
         self.status_label = QLabel("Статус: Готов к работе")
         self.counter_label = QLabel("Создано задач: 0")
 
         main_layout.addWidget(self.status_label)
         main_layout.addWidget(self.counter_label)
 
-        # Подключение сигналов кнопок
         self.create_button.clicked.connect(self.create_task)
         self.clear_button.clicked.connect(self.clear_form)
         self.delete_button.clicked.connect(self.delete_last_task)
@@ -164,15 +154,13 @@ class TaskManager(QMainWindow):
             self.description_input.toPlainText().strip()
         )
 
-        # Проверяем, введено ли название задачи
         if not title:
             self.status_label.setText(
                 "Статус: Введите название задачи"
             )
             self.title_input.setFocus()
             return
-
-        # Сохраняем информацию о задаче в словарь
+            
         task = {
             "title": title,
             "description": description,
@@ -185,14 +173,12 @@ class TaskManager(QMainWindow):
 
         self.tasks.append(task)
 
-        # Обновляем счётчик и статус
         self.counter_label.setText(
             f"Создано задач: {len(self.tasks)}"
         )
 
         self.status_label.setText("Статус: Задача создана")
-
-        # Обновляем список и очищаем форму
+        
         self.show_tasks()
         self.clear_form()
 
@@ -201,7 +187,6 @@ class TaskManager(QMainWindow):
 
         self.tasks_output.clear()
 
-        # Выбираем задачи для отображения
         visible_tasks = self.tasks
 
         if selected_priority != "Все":
@@ -216,7 +201,6 @@ class TaskManager(QMainWindow):
             )
             return
 
-        # Выводим каждую задачу
         for number, task in enumerate(visible_tasks, start=1):
             important = (
                 "Да" if task["important"] else "Нет"
@@ -240,14 +224,12 @@ class TaskManager(QMainWindow):
             self.tasks_output.append(task_text)
 
     def clear_form(self):
-        # Очищаем поля ввода
+
         self.title_input.clear()
         self.description_input.clear()
 
-        # Возвращаем приоритет по умолчанию
         self.medium_radio.setChecked(True)
 
-        # Сбрасываем дополнительные настройки
         self.important_checkbox.setChecked(False)
         self.notification_checkbox.setChecked(False)
 
