@@ -1,0 +1,8 @@
+[
+    {
+        "id": 2,
+        "author": "Maria",
+        "text": "Changed with PATCH",
+        "likes": 0
+    }
+]
